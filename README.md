@@ -16,6 +16,12 @@ Services:
 
 ## Run
 
+Optionally configure the MCP server port (defaults to `3000`):
+
+```bash
+cp .env.example .env
+```
+
 ```bash
 docker compose up -d
 ```
@@ -24,7 +30,7 @@ docker compose up -d
 
 - Selenium: `http://localhost:4444`
 - CDP: `http://localhost:9222`
-- MCP: `http://localhost:3000`
+- MCP: `http://localhost:${MCP_PORT}` (default `http://localhost:3000`)
 - VNC: `localhost:5900` (recommended client: TigerVNC https://github.com/TigerVNC/tigervnc)
 
 ## Use from VS Code (MCP)
@@ -37,7 +43,7 @@ docker compose up -d
 
 2. In VS Code, add a new MCP server that points at:
 
-	 - `http://localhost:3000/sse`
+	 - `http://localhost:${MCP_PORT}/sse` (default `http://localhost:3000/sse`)
 
 ## Persistence
 
@@ -51,3 +57,4 @@ docker compose down -v
 
 - `KEEPALIVE_INTERVAL_MS` (bootstrap; default `60000`)
 - `SE_NODE_SESSION_TIMEOUT` (selenium; default `3600` in compose)
+- `MCP_PORT` (MCP server + published port; default `3000`)
